@@ -1,7 +1,7 @@
     /* =====================
        استایل‌های عمومی
        ===================== */
-    * { box-sizing: border-box; font-family: Vazirmatn, Tahoma, sans-serif; }
+    * { box-sizing: border-box; font-family: 'B Jadid', sans-serif; }
     body { margin: 0; height: 100vh; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #f5f5f5; display: flex; }
 
     /* =====================
@@ -57,9 +57,10 @@
     .profile-menu button:hover { background: rgba(0,255,153,0.2); }
 
 @font-face {    font-family: 'B Jadid';
-    src: url('BJadidBold.woff2') format('woff2'),
-        url('BJadidBold.woff') format('woff');
+    src: url('BJadidBold.woff2') format('fonts/BJadidBold.woff2'),
+        url('BJadidBold.woff') format('fonts/BJadidBold.woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
+
