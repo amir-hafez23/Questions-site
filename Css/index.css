@@ -55,3 +55,11 @@
     .profile-menu { position: absolute; bottom: 70px; right: 10px; background: rgba(0,0,0,0.85); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: none; flex-direction: column; min-width: 180px; overflow: hidden; z-index: 100; }
     .profile-menu button { background: none; border: none; color: #fff; padding: 12px 15px; text-align: right; cursor: pointer; transition: background 0.2s; }
     .profile-menu button:hover { background: rgba(0,255,153,0.2); }
+
+@font-face {    font-family: 'B Jadid';
+    src: url('BJadidBold.woff2') format('woff2'),
+        url('BJadidBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
