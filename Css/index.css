@@ -56,13 +56,16 @@
     .profile-menu button { background: none; border: none; color: #fff; padding: 12px 15px; text-align: right; cursor: pointer; transition: background 0.2s; }
     .profile-menu button:hover { background: rgba(0,255,153,0.2); }
     
-@font-face {    font-family: 'B Jadid';
-    src: url('BJadidBold.woff2') format('fonts/BJadidBold.woff2'),
-        url('BJadidBold.woff') format('fonts/BJadidBold.woff');
+@font-face {
+    font-family: 'B Jadid';
+    src: url('fonts/BJadidBold.woff2') format('woff2'),
+         url('fonts/BJadidBold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
+
+
 
 
 
