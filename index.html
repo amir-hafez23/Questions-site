@@ -5,27 +5,25 @@
   <title>سامانه آزمون آنلاین</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Css/index.css" />
-  </head>
+</head>
 <body>
-  <!-- =====================
-       پنل سمت چپ
-       ===================== -->
+
+  <!-- پنل سمت چپ -->
   <aside class="sidebar">
     <h2>پنل آزمون</h2>
-    <button class="menu-btn active" onclick="showSection('exams')">آزمون‌های فعلی</button>
-    <button class="menu-btn" onclick="showSection('samples')">نمونه سوال‌ها</button>
-    <button class="menu-btn" onclick="showSection('results')">نتایج آزمون‌ها</button>
 
-    <!-- =====================
-         پروفایل کاربر
-         ===================== -->
+    <button class="menu-btn active" onclick="showSection(event,'exams')">آزمون‌های فعلی</button>
+    <button class="menu-btn" onclick="showSection(event,'samples')">نمونه سوال‌ها</button>
+    <button class="menu-btn" onclick="showSection(event,'results')">نتایج آزمون‌ها</button>
+
+    <!-- پروفایل -->
     <div class="profile">
-      <div class="avatar">👤</div>
+      <div class="avatar" id="profileToggle">👤</div>
       <div class="info">
         <span class="name">دانش‌آموز</span>
         <span class="role">کاربر عادی</span>
       </div>
-      <!-- منوی بازشونده پروفایل -->
+
       <div class="profile-menu" id="profileMenu">
         <button onclick="openProfile()">مشاهده پروفایل</button>
         <button>تغییر رمز عبور</button>
@@ -34,101 +32,88 @@
     </div>
   </aside>
 
-  <!-- =====================
-       بخش محتوا اصلی
-       ===================== -->
+  <!-- محتوای اصلی -->
   <main class="content">
-    <!-- آزمون‌های فعلی -->
+
     <div id="exams" class="card">
       <h3>آزمون‌های فعال</h3>
-      <div class="placeholder">لیست آزمون‌هایی که الان می‌تونی شرکت کنی اینجا نمایش داده میشه</div>
+      <div class="placeholder">لیست آزمون‌های فعال</div>
     </div>
 
-    <!-- نمونه سوال‌ها -->
     <div id="samples" class="card" style="display:none">
       <h3>نمونه سوال‌ها</h3>
-      <div class="placeholder">نمونه سوال‌ها بر اساس درس و پایه اینجا قرار می‌گیرن</div>
+      <div class="placeholder">نمونه سوال‌ها</div>
     </div>
 
-    <!-- نتایج آزمون‌ها -->
     <div id="results" class="card" style="display:none">
       <h3>نتایج آزمون‌ها</h3>
-      <div class="placeholder">کارنامه و نتایج آزمون‌های قبلی اینجا نمایش داده میشه</div>
+      <div class="placeholder">نتایج آزمون‌ها</div>
     </div>
 
-    <!-- پروفایل کاربر -->
     <div id="profilePage" class="card" style="display:none; max-width:700px">
       <h3>پروفایل کاربر</h3>
+
       <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px">
         <label for="avatarInput" style="cursor:pointer">
-          <div id="avatarPreview" style="width:90px;height:90px;border-radius:50%;background:rgba(0,255,153,0.25);display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden">👤</div>
+          <div id="avatarPreview"
+            style="width:90px;height:90px;border-radius:50%;background:rgba(0,255,153,0.25);
+            display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden">
+            👤
+          </div>
         </label>
         <input type="file" id="avatarInput" accept="image/*" style="display:none" />
+
         <div>
-          <input id="nameInput" value="دانش‌آموز نمونه" style="background:none;border:none;color:#fff;font-size:18px;font-weight:bold" />
-          <input id="gradeInput" value="پایه نهم" style="background:none;border:none;color:#aaa;margin-top:4px" />
+          <input value="دانش‌آموز نمونه"
+            style="background:none;border:none;color:#fff;font-size:18px;font-weight:bold" />
+          <input value="پایه نهم"
+            style="background:none;border:none;color:#aaa;margin-top:4px" />
           <div style="margin-top:6px;font-size:13px;color:#00ff99">وضعیت: فعال</div>
         </div>
       </div>
 
-      <div style="margin-top:25px">
-        <h4 style="color:#00ff99;margin-bottom:10px">تنظیمات</h4>
-        <button class="menu-btn" style="width:100%" onclick="saveProfile()">ذخیره تغییرات</button>
-        <button class="menu-btn" style="width:100%">تغییر رمز عبور</button>
-        <button class="menu-btn" style="width:100%">فعال‌سازی اعلان‌ها</button>
-      </div>
+      <button class="menu-btn" style="width:100%" onclick="saveProfile()">ذخیره تغییرات</button>
     </div>
+
   </main>
 
   <script>
-    // =====================
-    // تابع نمایش بخش‌ها
-    // =====================
-    function showSection(id) {
+    // نمایش بخش‌ها
+    function showSection(e, id) {
       document.querySelectorAll('.card').forEach(c => c.style.display = 'none');
       document.getElementById(id).style.display = 'block';
+
       document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      // راهنما: هنگام باز کردن هر بخش، هیچ رنگ زرد یا هایلایت اضافی نشان داده نمی‌شود
+      e.target.classList.add('active');
     }
 
-    // =====================
-    // منوی بازشونده پروفایل
-    // =====================
-    function toggleProfile() {
+    // منوی پروفایل (فقط با کلیک روی آواتار)
+    document.getElementById('profileToggle').addEventListener('click', () => {
       const menu = document.getElementById('profileMenu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-    document.querySelector('.profile').addEventListener('click', toggleProfile);
+    });
 
-    // =====================
-    // باز کردن صفحه پروفایل
-    // =====================
-    function openProfile(){
+    function openProfile() {
       document.querySelectorAll('.card').forEach(c => c.style.display = 'none');
       document.getElementById('profilePage').style.display = 'block';
       document.getElementById('profileMenu').style.display = 'none';
     }
 
-    // =====================
-    // تغییر عکس پروفایل
-    // =====================
-    document.getElementById('avatarInput').addEventListener('change', function(){
+    document.getElementById('avatarInput').addEventListener('change', function () {
       const file = this.files[0];
-      if(!file) return;
+      if (!file) return;
       const reader = new FileReader();
       reader.onload = e => {
-        document.getElementById('avatarPreview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover"/>`;
+        document.getElementById('avatarPreview').innerHTML =
+          `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`;
       };
       reader.readAsDataURL(file);
     });
 
-    // =====================
-    // ذخیره تغییرات پروفایل
-    // =====================
-    function saveProfile(){
-      alert('اطلاعات پروفایل ذخیره شد (فعلاً سمت کلاینت)');
+    function saveProfile() {
+      alert('اطلاعات ذخیره شد (سمت کلاینت)');
     }
   </script>
+
 </body>
 </html>
