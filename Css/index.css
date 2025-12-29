@@ -57,14 +57,13 @@
     .profile-menu button:hover { background: rgba(0,255,153,0.2); }
     
 @font-face {
-    font-family: 'B Jadid';
-    src: url('fonts/BJadidBold.woff2') format('woff2'),
-         url('fonts/BJadidBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'B Jadid';
+  src: url('../fonts/BJadidBold.woff2') format('woff2'),
+       url('../fonts/BJadidBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
-
 
 
 
